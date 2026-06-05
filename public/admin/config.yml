@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/photos"
+public_folder: "/photos"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/content/site.json"
+        label: "Site Settings"
+        name: "site"
+        fields:
+          - { label: "Business Name", name: "businessName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Drop-off Address", name: "address", widget: "text" }
+
+      - file: "src/content/about.md"
+        label: "About Page"
+        name: "about"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - { label: "Pull Quote", name: "pullQuote", widget: "string" }
+          - { label: "Story (part 1)", name: "storyPart1", widget: "markdown" }
+          - { label: "Story (part 2 — after Mike photo)", name: "storyPart2", widget: "markdown" }
+          - { label: "Closing Line", name: "closing", widget: "string" }

@@ -1,0 +1,66 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class="border-b border-cream-dark bg-paper sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-display text-xl md:text-2xl tracking-tight text-ink hover:text-oxblood transition-colors">
+      Zumbrota Shoe <span class="text-tan">&</span> Leather
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm uppercase tracking-widest transition-colors",
+              pathname === link.href
+                ? "text-oxblood"
+                : "text-ink-soft hover:text-oxblood",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-ink"
+      aria-label="Toggle menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-menu" class="hidden md:hidden border-t border-cream-dark bg-paper">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm uppercase tracking-widest",
+              pathname === link.href ? "text-oxblood" : "text-ink-soft",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+</script>

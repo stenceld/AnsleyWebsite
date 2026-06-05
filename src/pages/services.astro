@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categories = [
+  {
+    title: "Shoe & Boot Repair",
+    img: "/photos/cowboy-boot-resole.jpg",
+    items: [
+      "Full and half sole replacement",
+      "Heel replacement and rebuilding",
+      "Vibram® resoles for dress shoes, boots, and heels",
+      "Cowboy and western boot restoration",
+      "Stitching and seam repair",
+      "Cleaning, conditioning, and polish",
+    ],
+  },
+  {
+    title: "Designer & Specialty Footwear",
+    img: "/photos/louboutin-resole.jpg",
+    items: [
+      "Christian Louboutin and other luxury heel protection",
+      "Vibram half-sole installation to preserve original soles",
+      "Patent leather and delicate material care",
+      "Toe taps and heel caps",
+    ],
+  },
+  {
+    title: "Casual & Everyday Shoes",
+    img: "/photos/birkenstock-resole.jpg",
+    items: [
+      "Birkenstock resoling and cork refresh",
+      "Sandal strap repair",
+      "Sneaker and casual shoe restoration",
+    ],
+  },
+  {
+    title: "Leather Repair",
+    img: "/photos/belts-stack.jpg",
+    items: [
+      "Belt resizing, repair, and new holes",
+      "Bag and purse stitching and strap replacement",
+      "Jacket and apparel leather repair",
+      "Buckle replacement",
+    ],
+  },
+  {
+    title: "Custom Leather Work",
+    img: "/photos/knife-sheath.jpg",
+    items: [
+      "Hand-stitched knife sheaths",
+      "Custom straps and small leather goods",
+      "Bespoke pieces — bring me your idea",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Services — Zumbrota Shoe & Leather Repair"
+  description="Shoe repair, boot resoling, leather restoration, and custom leather work in Zumbrota, MN."
+>
+  <section class="bg-cream py-20 px-6 border-b border-cream-dark">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs uppercase tracking-[0.3em] text-tan mb-6">Services</p>
+      <h1 class="font-display text-5xl md:text-6xl mb-6">What we do.</h1>
+      <p class="font-serif text-lg md:text-xl text-ink-soft leading-relaxed">
+        From everyday shoes to luxury heels, work boots to leather belts —
+        if it can be repaired, we'll give it new life. Don't see what you need?
+        <a href="/contact" class="text-oxblood underline decoration-oxblood/40 hover:decoration-oxblood">Ask us.</a>
+      </p>
+    </div>
+  </section>
+
+  {
+    categories.map((cat, i) => (
+      <section class:list={["py-20 px-6", i % 2 === 1 ? "bg-cream" : ""]}>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div class:list={[i % 2 === 1 ? "md:order-2" : ""]}>
+            <img
+              src={cat.img}
+              alt={cat.title}
+              class="w-full aspect-[4/3] object-cover"
+            />
+          </div>
+          <div class:list={[i % 2 === 1 ? "md:order-1" : ""]}>
+            <h2 class="font-display text-3xl md:text-4xl mb-6">{cat.title}</h2>
+            <ul class="space-y-3">
+              {cat.items.map((item) => (
+                <li class="flex gap-3 text-ink-soft">
+                  <span class="text-tan mt-2 shrink-0">
+                    <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor">
+                      <circle cx="3" cy="3" r="3" />
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="bg-ink text-cream py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-display text-4xl md:text-5xl mb-6">
+        Ready to get started?
+      </h2>
+      <p class="text-lg text-cream/85 mb-10">
+        Drop off your items at Luya Shoes, or reach out for a quote.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="/contact"
+          class="px-7 py-3 bg-oxblood text-cream text-sm uppercase tracking-widest hover:bg-oxblood-dark transition-colors"
+        >
+          Request a Quote
+        </a>
+        <a
+          href="tel:5078840768"
+          class="px-7 py-3 border border-cream/40 text-cream text-sm uppercase tracking-widest hover:bg-cream/10 transition-colors"
+        >
+          Call 507-884-0768
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
